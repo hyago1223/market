@@ -14,7 +14,7 @@ export const generateToken = (user) => {
         },
     JWT_SECRET,
     {
-        expiresIn: '24h'
+        expiresIn: process.env.JWT_EXPIRATION
     })
 }
 

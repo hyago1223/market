@@ -1,6 +1,6 @@
 {
   "name": "merkactshare",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Um_marketshare",
   "main": "server.js",
   "type": "module",
