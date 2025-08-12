@@ -2,6 +2,7 @@ import pool from '../config/db.js';
 import bcrypt from 'bcrypt';
 import register from '../utils/validators.js';
 import express from 'express';
+import logger from '../config/logger.js';
 
 const router = express.Router();
 
@@ -19,7 +20,8 @@ router.post("/api/register", async (req,res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        await pool.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hashedPassword]);
+        await pool.query('INSERT INTO users (name, email, password,is_admin) VALUES (?, ?, ?, 0)', [name, email, hashedPassword]);
+        logger.info(`Usuario do nome: ${name} e email: ${email} foi registrado com sucesso`);
         res.status(201).json({ message: 'Usuário registrado com sucesso.' });
     } catch (err) {
         next(err);

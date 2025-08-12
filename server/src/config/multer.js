@@ -4,7 +4,7 @@ import crypto from 'crypto';
 
 const storage_products = multer.diskStorage({
     destination: function(req, file, cb){
-
+        cb(null,path.resolve(__dirname,'..','..','..','assets','products'));
     },
     filename: function(req, file, cb){
         const hash = crypto.randomBytes(6).toString('hex');
@@ -15,7 +15,7 @@ const storage_products = multer.diskStorage({
 
 const storage_users = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null, path.resolve(__dirname, '..', '..', 'uploads', 'users'));
+        cb(null, path.resolve(__dirname, '..', '..','..', 'assets', 'users'));
     },
     filename: function(req, file, cb){
         const hash = crypto.randomBytes(6).toString('hex');
